@@ -1,179 +1,462 @@
-import jobsData from '@/services/mockData/jobs.json'
+import { toast } from 'react-toastify'
 
-// Simulated delay for realistic API behavior
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+// Initialize ApperClient
+const getApperClient = () => {
+  const { ApperClient } = window.ApperSDK
+  return new ApperClient({
+    apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+    apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+  })
+}
+
+const tableName = 'job'
 
 export const jobService = {
   async getAll() {
-    await delay(300)
-    return [...jobsData]
+    try {
+      const apperClient = getApperClient()
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "title" } },
+          { field: { Name: "company" } },
+          { field: { Name: "location" } },
+          { field: { Name: "salary" } },
+          { field: { Name: "type" } },
+          { field: { Name: "description" } },
+          { field: { Name: "requirements" } },
+          { field: { Name: "posted_date" } },
+          { field: { Name: "experience_level" } },
+          { field: { Name: "Tags" } }
+        ],
+        orderBy: [
+          { fieldName: "posted_date", sorttype: "DESC" }
+        ],
+        pagingInfo: { limit: 50, offset: 0 }
+      }
+
+      const response = await apperClient.fetchRecords(tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        return []
+      }
+
+      return response.data || []
+    } catch (error) {
+      console.error('Error fetching jobs:', error)
+      throw error
+    }
   },
 
   async getById(id) {
-    await delay(200)
-    const job = jobsData.find(job => job.Id === id)
-    if (!job) {
-      throw new Error('Job not found')
+    try {
+      const apperClient = getApperClient()
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "title" } },
+          { field: { Name: "company" } },
+          { field: { Name: "location" } },
+          { field: { Name: "salary" } },
+          { field: { Name: "type" } },
+          { field: { Name: "description" } },
+          { field: { Name: "requirements" } },
+          { field: { Name: "posted_date" } },
+          { field: { Name: "experience_level" } },
+          { field: { Name: "Tags" } }
+        ]
+      }
+
+      const response = await apperClient.getRecordById(tableName, id, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        return null
+      }
+
+      return response.data
+    } catch (error) {
+      console.error(`Error fetching job with ID ${id}:`, error)
+      throw error
     }
-    return { ...job }
   },
 
   async searchJobs(searchParams = {}, filters = {}) {
-    await delay(400)
-    let results = [...jobsData]
+    try {
+      const apperClient = getApperClient()
+      const whereConditions = []
+      const whereGroups = []
 
-    // Filter by search parameters
-    if (searchParams.keywords) {
-      const keywords = searchParams.keywords.toLowerCase()
-      results = results.filter(job => 
-        job.title.toLowerCase().includes(keywords) ||
-        job.company.toLowerCase().includes(keywords) ||
-        job.description.toLowerCase().includes(keywords)
-      )
-    }
+      // Search parameters
+      if (searchParams.keywords) {
+        whereGroups.push({
+          operator: "OR",
+          subGroups: [
+            {
+              conditions: [
+                { fieldName: "title", operator: "Contains", values: [searchParams.keywords], include: true }
+              ],
+              operator: "OR"
+            },
+            {
+              conditions: [
+                { fieldName: "company", operator: "Contains", values: [searchParams.keywords], include: true }
+              ],
+              operator: "OR"
+            },
+            {
+              conditions: [
+                { fieldName: "description", operator: "Contains", values: [searchParams.keywords], include: true }
+              ],
+              operator: "OR"
+            }
+          ]
+        })
+      }
 
-    if (searchParams.location) {
-      const location = searchParams.location.toLowerCase()
-      results = results.filter(job => 
-        job.location.toLowerCase().includes(location)
-      )
-    }
+      if (searchParams.location) {
+        whereConditions.push({
+          fieldName: "location",
+          Operator: "Contains",
+          Values: [searchParams.location],
+          Include: true
+        })
+      }
 
-    // Apply filters
-    if (filters.jobType?.length > 0) {
-      results = results.filter(job => filters.jobType.includes(job.type))
-    }
+      // Apply filters
+      if (filters.jobType?.length > 0) {
+        whereConditions.push({
+          fieldName: "type",
+          Operator: "ExactMatch",
+          Values: filters.jobType,
+          Include: true
+        })
+      }
 
-    if (filters.experienceLevel?.length > 0) {
-      results = results.filter(job => filters.experienceLevel.includes(job.experienceLevel))
-    }
+      if (filters.experienceLevel?.length > 0) {
+        whereConditions.push({
+          fieldName: "experience_level",
+          Operator: "ExactMatch",
+          Values: filters.experienceLevel,
+          Include: true
+        })
+      }
 
-    if (filters.salaryRange) {
-      const { min, max } = filters.salaryRange
-      results = results.filter(job => {
-        if (!job.salary || (!job.salary.min && !job.salary.max)) return false
-        const jobMin = job.salary.min || 0
-        const jobMax = job.salary.max || Infinity
-        
-        if (min && max) {
-          return jobMax >= min && jobMin <= max
-        } else if (min) {
-          return jobMax >= min
-        } else if (max) {
-          return jobMin <= max
-        }
-        return true
-      })
-    }
+      if (filters.postedDate) {
+        const daysAgo = parseInt(filters.postedDate)
+        whereConditions.push({
+          fieldName: "posted_date",
+          Operator: "RelativeMatch",
+          Values: [`last ${daysAgo} days`],
+          Include: true
+        })
+      }
 
-    if (filters.postedDate) {
-      const daysAgo = parseInt(filters.postedDate)
-      const cutoffDate = new Date()
-      cutoffDate.setDate(cutoffDate.getDate() - daysAgo)
+      if (filters.company) {
+        whereConditions.push({
+          fieldName: "company",
+          Operator: "Contains",
+          Values: [filters.company],
+          Include: true
+        })
+      }
+
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "title" } },
+          { field: { Name: "company" } },
+          { field: { Name: "location" } },
+          { field: { Name: "salary" } },
+          { field: { Name: "type" } },
+          { field: { Name: "description" } },
+          { field: { Name: "requirements" } },
+          { field: { Name: "posted_date" } },
+          { field: { Name: "experience_level" } },
+          { field: { Name: "Tags" } }
+        ],
+        where: whereConditions,
+        whereGroups: whereGroups,
+        orderBy: [
+          { fieldName: "posted_date", sorttype: "DESC" }
+        ],
+        pagingInfo: { limit: 50, offset: 0 }
+      }
+
+      const response = await apperClient.fetchRecords(tableName, params)
       
-      results = results.filter(job => {
-        const jobDate = new Date(job.postedDate)
-        return jobDate >= cutoffDate
-      })
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        return []
+      }
+
+      return response.data || []
+    } catch (error) {
+      console.error('Error searching jobs:', error)
+      throw error
     }
-
-    if (filters.company) {
-      const company = filters.company.toLowerCase()
-      results = results.filter(job => 
-        job.company.toLowerCase().includes(company)
-      )
-    }
-
-    // Sort by posted date (newest first)
-    results.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate))
-
-    return results
   },
 
   async getSimilarJobs(jobId) {
-    await delay(200)
-    const job = jobsData.find(j => j.Id === jobId)
-    if (!job) return []
+    try {
+      const job = await this.getById(jobId)
+      if (!job) return []
 
-    // Find similar jobs based on title keywords and company
-    const titleWords = job.title.toLowerCase().split(' ')
-    const similar = jobsData
-      .filter(j => j.Id !== jobId)
-      .filter(j => {
-        const matchesTitle = titleWords.some(word => 
-          j.title.toLowerCase().includes(word) && word.length > 2
-        )
-        const matchesCompany = j.company === job.company
-        return matchesTitle || matchesCompany
-      })
-      .slice(0, 5)
+      const apperClient = getApperClient()
+      const whereConditions = [
+        {
+          fieldName: "Id",
+          Operator: "NotEqualTo",
+          Values: [jobId],
+          Include: true
+        }
+      ]
 
-    return similar
+      const whereGroups = []
+      if (job.title) {
+        const titleWords = job.title.toLowerCase().split(' ').filter(word => word.length > 2)
+        if (titleWords.length > 0) {
+          whereGroups.push({
+            operator: "OR",
+            subGroups: titleWords.map(word => ({
+              conditions: [
+                { fieldName: "title", operator: "Contains", values: [word], include: true }
+              ],
+              operator: "OR"
+            }))
+          })
+        }
+      }
+
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "title" } },
+          { field: { Name: "company" } },
+          { field: { Name: "location" } },
+          { field: { Name: "salary" } },
+          { field: { Name: "type" } },
+          { field: { Name: "experience_level" } }
+        ],
+        where: whereConditions,
+        whereGroups: whereGroups,
+        orderBy: [
+          { fieldName: "posted_date", sorttype: "DESC" }
+        ],
+        pagingInfo: { limit: 5, offset: 0 }
+      }
+
+      const response = await apperClient.fetchRecords(tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        return []
+      }
+
+      return response.data || []
+    } catch (error) {
+      console.error('Error fetching similar jobs:', error)
+      return []
+    }
   },
 
   async saveJob(job) {
-    await delay(200)
-    const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]')
-    const exists = savedJobs.find(saved => saved.Id === job.Id)
-    
-    if (!exists) {
-      savedJobs.push({ ...job, savedAt: new Date().toISOString() })
-      localStorage.setItem('savedJobs', JSON.stringify(savedJobs))
+    try {
+      // For now, use localStorage for saved jobs as they're user-specific
+      const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]')
+      const exists = savedJobs.find(saved => saved.Id === job.Id)
+      
+      if (!exists) {
+        savedJobs.push({ ...job, savedAt: new Date().toISOString() })
+        localStorage.setItem('savedJobs', JSON.stringify(savedJobs))
+      }
+      
+      return { ...job }
+    } catch (error) {
+      console.error('Error saving job:', error)
+      throw error
     }
-    
-    return { ...job }
   },
 
   async unsaveJob(jobId) {
-    await delay(200)
-    const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]')
-    const filtered = savedJobs.filter(job => job.Id !== jobId)
-    localStorage.setItem('savedJobs', JSON.stringify(filtered))
-    return true
+    try {
+      const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]')
+      const filtered = savedJobs.filter(job => job.Id !== jobId)
+      localStorage.setItem('savedJobs', JSON.stringify(filtered))
+      return true
+    } catch (error) {
+      console.error('Error unsaving job:', error)
+      throw error
+    }
   },
 
   async getSavedJobs() {
-    await delay(200)
-    const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]')
-    return savedJobs
+    try {
+      const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]')
+      return savedJobs
+    } catch (error) {
+      console.error('Error getting saved jobs:', error)
+      return []
+    }
   },
 
   async create(jobData) {
-    await delay(300)
-    const jobs = [...jobsData]
-    const maxId = Math.max(...jobs.map(job => job.Id), 0)
-    const newJob = {
-      ...jobData,
-      Id: maxId + 1,
-      postedDate: new Date().toISOString()
+    try {
+      const apperClient = getApperClient()
+      
+      // Only include Updateable fields
+      const createData = {
+        Name: jobData.title || jobData.Name,
+        title: jobData.title,
+        company: jobData.company,
+        location: jobData.location,
+        type: jobData.type,
+        description: jobData.description,
+        requirements: Array.isArray(jobData.requirements) ? jobData.requirements.join('\n') : jobData.requirements,
+        posted_date: new Date().toISOString(),
+        experience_level: jobData.experienceLevel || jobData.experience_level,
+        salary: jobData.salary && typeof jobData.salary === 'object' ? 
+               `${jobData.salary.min || ''}-${jobData.salary.max || ''}` : 
+               jobData.salary,
+        Tags: jobData.Tags || ''
+      }
+
+      const params = {
+        records: [createData]
+      }
+
+      const response = await apperClient.createRecord(tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        throw new Error(response.message)
+      }
+
+      if (response.results) {
+        const failedRecords = response.results.filter(result => !result.success)
+        if (failedRecords.length > 0) {
+          console.error(`Failed to create ${failedRecords.length} records:${JSON.stringify(failedRecords)}`)
+          failedRecords.forEach(record => {
+            record.errors?.forEach(error => {
+              toast.error(`${error.fieldLabel}: ${error.message}`)
+            })
+            if (record.message) toast.error(record.message)
+          })
+        }
+
+        const successfulRecords = response.results.filter(result => result.success)
+        if (successfulRecords.length > 0) {
+          return successfulRecords[0].data
+        }
+      }
+
+      throw new Error('No successful records created')
+    } catch (error) {
+      console.error('Error creating job:', error)
+      throw error
     }
-    jobs.push(newJob)
-    return { ...newJob }
   },
 
   async update(id, jobData) {
-    await delay(300)
-    const jobs = [...jobsData]
-    const index = jobs.findIndex(job => job.Id === id)
-    if (index === -1) {
-      throw new Error('Job not found')
+    try {
+      const apperClient = getApperClient()
+      
+      // Only include Updateable fields
+      const updateData = {
+        Id: id,
+        Name: jobData.title || jobData.Name,
+        title: jobData.title,
+        company: jobData.company,
+        location: jobData.location,
+        type: jobData.type,
+        description: jobData.description,
+        requirements: Array.isArray(jobData.requirements) ? jobData.requirements.join('\n') : jobData.requirements,
+        experience_level: jobData.experienceLevel || jobData.experience_level,
+        salary: jobData.salary && typeof jobData.salary === 'object' ? 
+               `${jobData.salary.min || ''}-${jobData.salary.max || ''}` : 
+               jobData.salary,
+        Tags: jobData.Tags || ''
+      }
+
+      const params = {
+        records: [updateData]
+      }
+
+      const response = await apperClient.updateRecord(tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        throw new Error(response.message)
+      }
+
+      if (response.results) {
+        const failedRecords = response.results.filter(result => !result.success)
+        if (failedRecords.length > 0) {
+          console.error(`Failed to update ${failedRecords.length} records:${JSON.stringify(failedRecords)}`)
+          failedRecords.forEach(record => {
+            record.errors?.forEach(error => {
+              toast.error(`${error.fieldLabel}: ${error.message}`)
+            })
+            if (record.message) toast.error(record.message)
+          })
+        }
+
+        const successfulRecords = response.results.filter(result => result.success)
+        if (successfulRecords.length > 0) {
+          return successfulRecords[0].data
+        }
+      }
+
+      throw new Error('No successful records updated')
+    } catch (error) {
+      console.error('Error updating job:', error)
+      throw error
     }
-    jobs[index] = { ...jobs[index], ...jobData }
-    return { ...jobs[index] }
   },
 
   async delete(id) {
-    await delay(300)
-    const jobs = [...jobsData]
-    const index = jobs.findIndex(job => job.Id === id)
-    if (index === -1) {
-      throw new Error('Job not found')
+    try {
+      const apperClient = getApperClient()
+      const params = {
+        RecordIds: [id]
+      }
+
+      const response = await apperClient.deleteRecord(tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        throw new Error(response.message)
+      }
+
+      if (response.results) {
+        const failedRecords = response.results.filter(result => !result.success)
+        if (failedRecords.length > 0) {
+          console.error(`Failed to delete ${failedRecords.length} records:${JSON.stringify(failedRecords)}`)
+          failedRecords.forEach(record => {
+            if (record.message) toast.error(record.message)
+          })
+        }
+
+        const successfulRecords = response.results.filter(result => result.success)
+        return successfulRecords.length > 0
+      }
+
+      return false
+    } catch (error) {
+      console.error('Error deleting job:', error)
+      throw error
     }
-jobs.splice(index, 1)
-    return true
   },
 
   async uploadJobs(csvFile, onProgress = () => {}) {
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
     await delay(500)
     
     return new Promise((resolve, reject) => {
@@ -220,13 +503,6 @@ jobs.splice(index, 1)
               continue
             }
 
-            // Process salary fields
-            const salary = {}
-            if (jobData.salarymin || jobData.salarymax) {
-              salary.min = jobData.salarymin ? parseInt(jobData.salarymin) : null
-              salary.max = jobData.salarymax ? parseInt(jobData.salarymax) : null
-            }
-
             const processedJob = {
               title: jobData.title,
               company: jobData.company,
@@ -235,14 +511,10 @@ jobs.splice(index, 1)
               experienceLevel: jobData.experiencelevel || 'Mid Level',
               description: jobData.description || '',
               requirements: jobData.requirements || '',
-              salary: Object.keys(salary).length > 0 ? salary : null
+              salary: jobData.salarymin || jobData.salarymax ? 
+                     { min: parseInt(jobData.salarymin) || null, max: parseInt(jobData.salarymax) || null } : 
+                     null
             }
-
-            // Generate ID
-            const existingJobs = [...jobsData, ...jobs]
-            const maxId = Math.max(...existingJobs.map(job => job.Id), 0)
-            processedJob.Id = maxId + jobs.length + 1
-            processedJob.postedDate = new Date().toISOString()
 
             jobs.push(processedJob)
 
@@ -259,8 +531,19 @@ jobs.splice(index, 1)
             return
           }
 
+          // Create jobs in database
+          const createdJobs = []
+          for (const job of jobs) {
+            try {
+              const created = await this.create(job)
+              createdJobs.push(created)
+            } catch (error) {
+              console.warn('Failed to create job:', job.title, error)
+            }
+          }
+
           onProgress(100)
-          resolve(jobs)
+          resolve(createdJobs)
         } catch (error) {
           reject(new Error('Failed to parse CSV file. Please check the format.'))
         }

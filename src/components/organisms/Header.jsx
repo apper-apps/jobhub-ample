@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import Button from '@/components/atoms/Button'
-import SearchBar from '@/components/molecules/SearchBar'
-import NavLink from '@/components/molecules/NavLink'
-import ApperIcon from '@/components/ApperIcon'
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { AuthContext } from "../../App";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import SearchBar from "@/components/molecules/SearchBar";
+import NavLink from "@/components/molecules/NavLink";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { logout } = useContext(AuthContext)
+  const { user, isAuthenticated } = useSelector((state) => state.user)
 
   const navigationItems = [
     { to: '/', label: 'Home', icon: 'Home' },
@@ -15,6 +19,14 @@ const Header = () => {
     { to: '/saved-jobs', label: 'Saved Jobs', icon: 'Heart' },
     { to: '/saved-searches', label: 'Saved Searches', icon: 'Bookmark' }
   ]
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
+  }
 
   return (
     <header className="bg-white shadow-sm border-b sticky top-0 z-40">
@@ -41,17 +53,36 @@ const Header = () => {
           <div className="hidden lg:block flex-1 max-w-md ml-8">
             <SearchBar variant="compact" />
           </div>
+{/* User Actions */}
+          <div className="flex items-center space-x-3">
+            {isAuthenticated && user && (
+              <div className="hidden md:flex items-center space-x-3">
+                <span className="text-sm text-gray-600">
+                  Welcome, {user.firstName || user.name || 'User'}
+                </span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleLogout}
+                >
+                  <ApperIcon name="LogOut" className="h-4 w-4 mr-1" />
+                  Logout
+                </Button>
+              </div>
+            )}
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <ApperIcon name={isMobileMenuOpen ? "X" : "Menu"} className="h-5 w-5" />
-            </Button>
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <ApperIcon name={isMobileMenuOpen ? "X" : "Menu"} className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
+        </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -63,7 +94,7 @@ const Header = () => {
             transition={{ duration: 0.2 }}
             className="md:hidden py-4 border-t"
           >
-            <nav className="flex flex-col space-y-2">
+<nav className="flex flex-col space-y-2">
               {navigationItems.map(item => (
                 <NavLink 
                   key={item.to} 
@@ -76,6 +107,25 @@ const Header = () => {
                 </NavLink>
               ))}
             </nav>
+            
+            {/* Mobile User Actions */}
+            {isAuthenticated && user && (
+              <div className="mt-4 pt-4 border-t">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">
+                    Welcome, {user.firstName || user.name || 'User'}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleLogout}
+                  >
+                    <ApperIcon name="LogOut" className="h-4 w-4 mr-1" />
+                    Logout
+                  </Button>
+                </div>
+              </div>
+            )}
             
             {/* Mobile Search */}
             <div className="mt-4 pt-4 border-t">
