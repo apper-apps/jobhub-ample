@@ -1,0 +1,577 @@
+[
+  {
+    "Id": 1,
+    "title": "Senior Software Engineer",
+    "company": "TechCorp",
+    "location": "San Francisco, CA",
+    "salary": {
+      "min": 120000,
+      "max": 180000
+    },
+    "type": "Full-time",
+    "description": "We are looking for a Senior Software Engineer to join our growing team. You will be responsible for designing, developing, and maintaining large-scale web applications using modern technologies.\n\nAs a Senior Software Engineer, you will:\n• Lead technical discussions and architectural decisions\n• Mentor junior developers and contribute to team growth\n• Collaborate with cross-functional teams to deliver high-quality products\n• Write clean, maintainable, and efficient code\n• Participate in code reviews and ensure best practices\n\nWe offer competitive compensation, excellent benefits, and the opportunity to work on cutting-edge technology in a collaborative environment.",
+    "requirements": [
+      "5+ years of experience in software development",
+      "Strong proficiency in JavaScript, React, and Node.js",
+      "Experience with cloud platforms (AWS, Azure, or GCP)",
+      "Knowledge of database systems (SQL and NoSQL)",
+      "Experience with agile development methodologies",
+      "Excellent problem-solving and communication skills",
+      "Bachelor's degree in Computer Science or related field"
+    ],
+    "postedDate": "2024-01-15T10:00:00Z",
+    "experienceLevel": "Senior Level"
+  },
+  {
+    "Id": 2,
+    "title": "Data Scientist",
+    "company": "DataInsights Inc",
+    "location": "New York, NY",
+    "salary": {
+      "min": 95000,
+      "max": 140000
+    },
+    "type": "Full-time",
+    "description": "Join our data science team to help drive business decisions through advanced analytics and machine learning. You will work with large datasets to extract meaningful insights and build predictive models.\n\nKey responsibilities include:\n• Analyzing complex datasets to identify trends and patterns\n• Building and deploying machine learning models\n• Creating data visualizations and reports for stakeholders\n• Collaborating with business teams to understand requirements\n• Staying up-to-date with latest data science techniques and tools\n\nWe provide a collaborative environment where you can grow your skills and make a real impact on business outcomes.",
+    "requirements": [
+      "Master's degree in Data Science, Statistics, or related field",
+      "3+ years of experience in data analysis and machine learning",
+      "Proficiency in Python and R programming languages",
+      "Experience with SQL and database management",
+      "Knowledge of machine learning frameworks (scikit-learn, TensorFlow, PyTorch)",
+      "Strong statistical analysis and data visualization skills",
+      "Experience with cloud platforms and big data tools"
+    ],
+    "postedDate": "2024-01-14T14:30:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 3,
+    "title": "Frontend Developer",
+    "company": "WebSolutions LLC",
+    "location": "Austin, TX",
+    "salary": {
+      "min": 70000,
+      "max": 95000
+    },
+    "type": "Full-time",
+    "description": "We are seeking a talented Frontend Developer to create engaging user interfaces for our web applications. You will work closely with designers and backend developers to deliver exceptional user experiences.\n\nWhat you'll do:\n• Develop responsive web applications using modern JavaScript frameworks\n• Collaborate with UX/UI designers to implement pixel-perfect designs\n• Optimize applications for maximum speed and scalability\n• Ensure cross-browser compatibility and accessibility standards\n• Participate in code reviews and maintain high code quality\n• Stay current with emerging frontend technologies and best practices\n\nJoin our team and help us build products that users love!",
+    "requirements": [
+      "2+ years of experience in frontend development",
+      "Proficiency in HTML, CSS, and JavaScript",
+      "Experience with React.js or Vue.js",
+      "Knowledge of responsive design principles",
+      "Familiarity with version control systems (Git)",
+      "Understanding of web performance optimization",
+      "Bachelor's degree in Computer Science or equivalent experience"
+    ],
+    "postedDate": "2024-01-13T09:15:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 4,
+    "title": "Product Manager",
+    "company": "InnovateTech",
+    "location": "Seattle, WA",
+    "salary": {
+      "min": 110000,
+      "max": 150000
+    },
+    "type": "Full-time",
+    "description": "We are looking for an experienced Product Manager to lead our product strategy and drive innovation. You will work with cross-functional teams to define product requirements and ensure successful product launches.\n\nResponsibilities:\n• Define product vision and strategy aligned with business goals\n• Gather and prioritize product requirements from stakeholders\n• Work with engineering teams to deliver products on time\n• Analyze market trends and competitive landscape\n• Collaborate with marketing and sales teams on go-to-market strategies\n• Monitor product performance and make data-driven decisions\n\nThis is an excellent opportunity to shape the future of our products and make a significant impact on our business growth.",
+    "requirements": [
+      "4+ years of product management experience",
+      "Strong analytical and problem-solving skills",
+      "Experience with agile development methodologies",
+      "Excellent communication and leadership abilities",
+      "Knowledge of product analytics tools",
+      "Understanding of user experience design principles",
+      "MBA or technical degree preferred"
+    ],
+    "postedDate": "2024-01-12T16:45:00Z",
+    "experienceLevel": "Senior Level"
+  },
+  {
+    "Id": 5,
+    "title": "UX Designer",
+    "company": "DesignStudio Pro",
+    "location": "Los Angeles, CA",
+    "salary": {
+      "min": 75000,
+      "max": 105000
+    },
+    "type": "Full-time",
+    "description": "Join our creative team as a UX Designer and help create intuitive, user-centered designs for digital products. You will be responsible for the entire design process from research to final implementation.\n\nWhat you'll do:\n• Conduct user research and usability testing\n• Create wireframes, prototypes, and high-fidelity designs\n• Collaborate with product managers and developers\n• Develop and maintain design systems and style guides\n• Present design concepts to stakeholders\n• Iterate on designs based on user feedback and data\n\nWe value creativity, user empathy, and attention to detail. Join us in creating products that truly make a difference!",
+    "requirements": [
+      "3+ years of UX design experience",
+      "Proficiency in design tools (Figma, Sketch, Adobe Creative Suite)",
+      "Strong understanding of user-centered design principles",
+      "Experience with user research methodologies",
+      "Knowledge of accessibility standards and best practices",
+      "Excellent communication and presentation skills",
+      "Portfolio showcasing design process and outcomes"
+    ],
+    "postedDate": "2024-01-11T11:20:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 6,
+    "title": "DevOps Engineer",
+    "company": "CloudTech Solutions",
+    "location": "Denver, CO",
+    "salary": {
+      "min": 100000,
+      "max": 135000
+    },
+    "type": "Full-time",
+    "description": "We are seeking a skilled DevOps Engineer to help streamline our development and deployment processes. You will work with development teams to implement CI/CD pipelines and maintain our cloud infrastructure.\n\nKey responsibilities:\n• Design and implement CI/CD pipelines\n• Manage cloud infrastructure and deployment processes\n• Monitor system performance and troubleshoot issues\n• Implement security best practices and compliance measures\n• Collaborate with development teams to improve deployment efficiency\n• Automate routine tasks and processes\n\nThis role offers the opportunity to work with cutting-edge technologies and make a significant impact on our development workflow.",
+    "requirements": [
+      "3+ years of DevOps or system administration experience",
+      "Experience with cloud platforms (AWS, Azure, GCP)",
+      "Knowledge of containerization technologies (Docker, Kubernetes)",
+      "Proficiency in scripting languages (Python, Bash, PowerShell)",
+      "Experience with CI/CD tools (Jenkins, GitLab CI, GitHub Actions)",
+      "Understanding of infrastructure as code (Terraform, Ansible)",
+      "Strong problem-solving and troubleshooting skills"
+    ],
+    "postedDate": "2024-01-10T13:30:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 7,
+    "title": "Marketing Manager",
+    "company": "GrowthCorp",
+    "location": "Chicago, IL",
+    "salary": {
+      "min": 80000,
+      "max": 110000
+    },
+    "type": "Full-time",
+    "description": "We are looking for a dynamic Marketing Manager to lead our marketing efforts and drive brand growth. You will develop and execute marketing strategies across multiple channels to increase brand awareness and generate leads.\n\nWhat you'll do:\n• Develop comprehensive marketing strategies and campaigns\n• Manage digital marketing channels (social media, email, content marketing)\n• Analyze campaign performance and optimize for better ROI\n• Collaborate with sales teams to align marketing and sales objectives\n• Manage marketing budget and vendor relationships\n• Stay current with marketing trends and best practices\n\nJoin our team and help us build a strong brand presence in the market!",
+    "requirements": [
+      "4+ years of marketing experience",
+      "Strong understanding of digital marketing channels",
+      "Experience with marketing automation tools",
+      "Excellent analytical and project management skills",
+      "Creative thinking and problem-solving abilities",
+      "Strong written and verbal communication skills",
+      "Bachelor's degree in Marketing, Business, or related field"
+    ],
+    "postedDate": "2024-01-09T10:45:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 8,
+    "title": "Sales Representative",
+    "company": "SalesForce Pro",
+    "location": "Miami, FL",
+    "salary": {
+      "min": 50000,
+      "max": 80000
+    },
+    "type": "Full-time",
+    "description": "Join our sales team as a Sales Representative and help drive revenue growth. You will be responsible for identifying potential clients, building relationships, and closing deals.\n\nResponsibilities:\n• Prospect and qualify potential customers\n• Conduct product demonstrations and presentations\n• Negotiate contracts and close deals\n• Maintain and grow existing client relationships\n• Meet or exceed monthly and quarterly sales targets\n• Collaborate with marketing team on lead generation\n\nWe offer competitive base salary plus commission, comprehensive benefits, and excellent growth opportunities.",
+    "requirements": [
+      "2+ years of sales experience",
+      "Strong communication and interpersonal skills",
+      "Proven track record of meeting sales targets",
+      "Experience with CRM systems",
+      "Ability to work independently and as part of a team",
+      "Customer-focused mindset",
+      "Bachelor's degree preferred"
+    ],
+    "postedDate": "2024-01-08T15:20:00Z",
+    "experienceLevel": "Entry Level"
+  },
+  {
+    "Id": 9,
+    "title": "Financial Analyst",
+    "company": "FinanceFirst",
+    "location": "Boston, MA",
+    "salary": {
+      "min": 65000,
+      "max": 90000
+    },
+    "type": "Full-time",
+    "description": "We are seeking a detail-oriented Financial Analyst to join our finance team. You will be responsible for financial planning, analysis, and reporting to support business decision-making.\n\nKey duties:\n• Prepare financial reports and analyze business performance\n• Develop financial models and forecasts\n• Support budgeting and planning processes\n• Conduct variance analysis and identify trends\n• Assist with special projects and ad-hoc analysis\n• Present findings to senior management\n\nThis role offers excellent opportunities for career growth in a supportive environment.",
+    "requirements": [
+      "2+ years of financial analysis experience",
+      "Strong proficiency in Excel and financial modeling",
+      "Knowledge of accounting principles and financial statements",
+      "Experience with financial planning software",
+      "Excellent analytical and problem-solving skills",
+      "Strong attention to detail and accuracy",
+      "Bachelor's degree in Finance, Accounting, or Economics"
+    ],
+    "postedDate": "2024-01-07T12:00:00Z",
+    "experienceLevel": "Entry Level"
+  },
+  {
+    "Id": 10,
+    "title": "Registered Nurse",
+    "company": "HealthCare Plus",
+    "location": "Phoenix, AZ",
+    "salary": {
+      "min": 60000,
+      "max": 85000
+    },
+    "type": "Full-time",
+    "description": "Join our healthcare team as a Registered Nurse and make a difference in patients' lives. You will provide direct patient care in a supportive and collaborative environment.\n\nResponsibilities:\n• Assess patient conditions and develop care plans\n• Administer medications and treatments\n• Monitor patient progress and document care\n• Collaborate with physicians and healthcare team\n• Educate patients and families about health conditions\n• Ensure compliance with healthcare regulations\n\nWe offer competitive compensation, comprehensive benefits, and opportunities for professional development.",
+    "requirements": [
+      "Valid RN license in state of practice",
+      "2+ years of nursing experience preferred",
+      "BLS and ACLS certification",
+      "Strong clinical assessment skills",
+      "Excellent communication and compassion",
+      "Ability to work in fast-paced environment",
+      "Bachelor's degree in Nursing preferred"
+    ],
+    "postedDate": "2024-01-06T08:30:00Z",
+    "experienceLevel": "Entry Level"
+  },
+  {
+    "Id": 11,
+    "title": "Machine Learning Engineer",
+    "company": "AI Innovations",
+    "location": "San Jose, CA",
+    "salary": {
+      "min": 130000,
+      "max": 180000
+    },
+    "type": "Full-time",
+    "description": "We are looking for a Machine Learning Engineer to develop and deploy ML models at scale. You will work on cutting-edge AI projects and contribute to our machine learning infrastructure.\n\nWhat you'll do:\n• Design and implement machine learning algorithms\n• Build and optimize ML pipelines and infrastructure\n• Deploy models to production environments\n• Collaborate with data scientists and software engineers\n• Monitor model performance and implement improvements\n• Research and implement new ML techniques\n\nJoin us in building the future of AI technology!",
+    "requirements": [
+      "4+ years of machine learning experience",
+      "Strong programming skills in Python and/or Scala",
+      "Experience with ML frameworks (TensorFlow, PyTorch, scikit-learn)",
+      "Knowledge of cloud platforms and containerization",
+      "Experience with big data technologies (Spark, Hadoop)",
+      "Understanding of MLOps and model deployment",
+      "Master's degree in Computer Science, Machine Learning, or related field"
+    ],
+    "postedDate": "2024-01-05T14:15:00Z",
+    "experienceLevel": "Senior Level"
+  },
+  {
+    "Id": 12,
+    "title": "Graphic Designer",
+    "company": "Creative Agency",
+    "location": "Portland, OR",
+    "salary": {
+      "min": 55000,
+      "max": 75000
+    },
+    "type": "Full-time",
+    "description": "Join our creative team as a Graphic Designer and bring ideas to life through visual storytelling. You will work on diverse projects including branding, marketing materials, and digital designs.\n\nResponsibilities:\n• Create visual designs for print and digital media\n• Develop brand identities and marketing materials\n• Collaborate with clients and internal teams\n• Ensure designs meet brand guidelines and standards\n• Manage multiple projects and meet deadlines\n• Stay current with design trends and technologies\n\nWe offer a creative environment where your artistic vision can flourish!",
+    "requirements": [
+      "2+ years of graphic design experience",
+      "Proficiency in Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+      "Strong portfolio showcasing diverse design work",
+      "Understanding of typography and color theory",
+      "Knowledge of print and digital design processes",
+      "Excellent creative and conceptual thinking skills",
+      "Bachelor's degree in Graphic Design or related field"
+    ],
+    "postedDate": "2024-01-04T11:45:00Z",
+    "experienceLevel": "Entry Level"
+  },
+  {
+    "Id": 13,
+    "title": "Backend Developer",
+    "company": "ServerTech Inc",
+    "location": "Atlanta, GA",
+    "salary": {
+      "min": 85000,
+      "max": 120000
+    },
+    "type": "Full-time",
+    "description": "We are seeking a skilled Backend Developer to build robust server-side applications and APIs. You will work with databases, servers, and application logic to create scalable backend systems.\n\nKey responsibilities:\n• Design and develop RESTful APIs and microservices\n• Optimize database queries and performance\n• Implement security best practices\n• Collaborate with frontend developers on API integration\n• Write unit tests and maintain code quality\n• Participate in system architecture decisions\n\nJoin our team and help us build reliable, scalable backend systems!",
+    "requirements": [
+      "3+ years of backend development experience",
+      "Proficiency in Java, Python, or Node.js",
+      "Experience with databases (SQL and NoSQL)",
+      "Knowledge of web services and API development",
+      "Understanding of software architecture patterns",
+      "Experience with version control and CI/CD",
+      "Bachelor's degree in Computer Science or related field"
+    ],
+    "postedDate": "2024-01-03T09:30:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 14,
+    "title": "Project Manager",
+    "company": "ProjectPro Solutions",
+    "location": "Dallas, TX",
+    "salary": {
+      "min": 90000,
+      "max": 125000
+    },
+    "type": "Full-time",
+    "description": "We are looking for an experienced Project Manager to lead cross-functional teams and deliver projects on time and within budget. You will manage project lifecycle from initiation to closure.\n\nWhat you'll do:\n• Plan and execute projects using agile methodologies\n• Coordinate with stakeholders and team members\n• Monitor project progress and manage risks\n• Facilitate meetings and communication\n• Ensure deliverables meet quality standards\n• Manage project budgets and resources\n\nThis role offers the opportunity to work on exciting projects and make a real impact on business success.",
+    "requirements": [
+      "4+ years of project management experience",
+      "PMP or Agile certification preferred",
+      "Strong leadership and communication skills",
+      "Experience with project management tools",
+      "Ability to manage multiple projects simultaneously",
+      "Problem-solving and decision-making abilities",
+      "Bachelor's degree in Business, Engineering, or related field"
+    ],
+    "postedDate": "2024-01-02T13:20:00Z",
+    "experienceLevel": "Senior Level"
+  },
+  {
+    "Id": 15,
+    "title": "Customer Success Manager",
+    "company": "ClientFirst Corp",
+    "location": "Nashville, TN",
+    "salary": {
+      "min": 70000,
+      "max": 95000
+    },
+    "type": "Full-time",
+    "description": "Join our team as a Customer Success Manager and help our clients achieve their goals. You will build strong relationships with customers and ensure their success with our products.\n\nResponsibilities:\n• Onboard new customers and ensure successful implementation\n• Develop and maintain strong customer relationships\n• Identify opportunities for account growth and expansion\n• Provide training and support to customers\n• Analyze customer usage and health metrics\n• Advocate for customer needs within the organization\n\nWe offer a collaborative environment where you can make a meaningful impact on customer success.",
+    "requirements": [
+      "3+ years of customer success or account management experience",
+      "Strong relationship-building and communication skills",
+      "Experience with SaaS products and technologies",
+      "Analytical mindset with data-driven approach",
+      "Problem-solving and conflict resolution abilities",
+      "Customer-focused mindset and empathy",
+      "Bachelor's degree in Business or related field"
+    ],
+    "postedDate": "2024-01-01T16:00:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 16,
+    "title": "Cybersecurity Specialist",
+    "company": "SecureIT Solutions",
+    "location": "Washington, DC",
+    "salary": {
+      "min": 95000,
+      "max": 130000
+    },
+    "type": "Full-time",
+    "description": "We are seeking a Cybersecurity Specialist to protect our organization's digital assets and infrastructure. You will implement security measures and respond to security incidents.\n\nKey duties:\n• Monitor and analyze security threats and vulnerabilities\n• Implement security controls and policies\n• Conduct security assessments and audits\n• Respond to security incidents and breaches\n• Develop security awareness training programs\n• Stay current with emerging security threats and technologies\n\nThis role offers the opportunity to work with cutting-edge security technologies and make a critical impact on organizational security.",
+    "requirements": [
+      "3+ years of cybersecurity experience",
+      "Knowledge of security frameworks (NIST, ISO 27001)",
+      "Experience with security tools and technologies",
+      "Understanding of network security and protocols",
+      "Incident response and forensics experience",
+      "Security certifications (CISSP, CISM, CEH) preferred",
+      "Bachelor's degree in Cybersecurity, Computer Science, or related field"
+    ],
+    "postedDate": "2023-12-31T10:30:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 17,
+    "title": "Content Writer",
+    "company": "ContentCo",
+    "location": "Remote",
+    "salary": {
+      "min": 45000,
+      "max": 65000
+    },
+    "type": "Full-time",
+    "description": "Join our content team as a Content Writer and create engaging, high-quality content for various digital platforms. You will write blog posts, articles, and marketing copy that resonates with our audience.\n\nWhat you'll do:\n• Write compelling content for blogs, websites, and social media\n• Research topics and conduct interviews with subject matter experts\n• Optimize content for SEO and search rankings\n• Collaborate with marketing team on content strategy\n• Edit and proofread content for accuracy and quality\n• Adapt writing style for different audiences and platforms\n\nWe offer a remote-first work environment and the opportunity to write about diverse topics!",
+    "requirements": [
+      "2+ years of content writing experience",
+      "Excellent writing and editing skills",
+      "Knowledge of SEO best practices",
+      "Experience with content management systems",
+      "Research and fact-checking abilities",
+      "Ability to meet deadlines and manage multiple projects",
+      "Bachelor's degree in English, Journalism, or related field"
+    ],
+    "postedDate": "2023-12-30T14:45:00Z",
+    "experienceLevel": "Entry Level"
+  },
+  {
+    "Id": 18,
+    "title": "Business Analyst",
+    "company": "Analytics Pro",
+    "location": "Minneapolis, MN",
+    "salary": {
+      "min": 75000,
+      "max": 100000
+    },
+    "type": "Full-time",
+    "description": "We are looking for a Business Analyst to bridge the gap between business needs and technical solutions. You will analyze business processes and recommend improvements.\n\nResponsibilities:\n• Gather and document business requirements\n• Analyze current business processes and identify improvements\n• Create functional specifications and process flows\n• Collaborate with stakeholders and development teams\n• Conduct testing and validation of solutions\n• Provide training and support to end users\n\nThis role offers the opportunity to work on diverse projects and make a meaningful impact on business operations.",
+    "requirements": [
+      "3+ years of business analysis experience",
+      "Strong analytical and problem-solving skills",
+      "Experience with requirements gathering and documentation",
+      "Knowledge of business process modeling",
+      "Excellent communication and stakeholder management skills",
+      "Experience with project management methodologies",
+      "Bachelor's degree in Business, Information Systems, or related field"
+    ],
+    "postedDate": "2023-12-29T11:15:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 19,
+    "title": "Social Media Manager",
+    "company": "Digital Marketing Hub",
+    "location": "Las Vegas, NV",
+    "salary": {
+      "min": 55000,
+      "max": 75000
+    },
+    "type": "Full-time",
+    "description": "Join our marketing team as a Social Media Manager and help build our brand presence across social platforms. You will create engaging content and manage social media campaigns.\n\nWhat you'll do:\n• Develop and execute social media strategies\n• Create engaging content for various social platforms\n• Monitor social media trends and engagement metrics\n• Collaborate with content creators and influencers\n• Manage social media advertising campaigns\n• Respond to comments and messages from followers\n\nWe offer a creative environment where you can showcase your social media expertise!",
+    "requirements": [
+      "2+ years of social media management experience",
+      "Experience with social media platforms and tools",
+      "Strong content creation and copywriting skills",
+      "Knowledge of social media analytics and reporting",
+      "Understanding of social media advertising",
+      "Creative thinking and trend awareness",
+      "Bachelor's degree in Marketing, Communications, or related field"
+    ],
+    "postedDate": "2023-12-28T15:30:00Z",
+    "experienceLevel": "Entry Level"
+  },
+  {
+    "Id": 20,
+    "title": "Quality Assurance Engineer",
+    "company": "TestPro Solutions",
+    "location": "San Diego, CA",
+    "salary": {
+      "min": 70000,
+      "max": 95000
+    },
+    "type": "Full-time",
+    "description": "We are seeking a Quality Assurance Engineer to ensure our software products meet the highest quality standards. You will design test cases and execute testing procedures.\n\nKey responsibilities:\n• Design and execute manual and automated test cases\n• Identify and document software defects\n• Collaborate with development teams on bug fixes\n• Develop and maintain test automation frameworks\n• Perform regression testing and user acceptance testing\n• Ensure compliance with quality standards and procedures\n\nJoin our team and help us deliver high-quality software products!",
+    "requirements": [
+      "3+ years of QA testing experience",
+      "Experience with test automation tools (Selenium, Cypress)",
+      "Knowledge of testing methodologies and best practices",
+      "Understanding of software development lifecycle",
+      "Strong attention to detail and analytical skills",
+      "Experience with bug tracking and test management tools",
+      "Bachelor's degree in Computer Science or related field"
+    ],
+    "postedDate": "2023-12-27T09:45:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 21,
+    "title": "Full Stack Developer",
+    "company": "WebDev Pro",
+    "location": "Tampa, FL",
+    "salary": {
+      "min": 80000,
+      "max": 110000
+    },
+    "type": "Full-time",
+    "description": "Join our development team as a Full Stack Developer and work on both frontend and backend technologies. You will build complete web applications from concept to deployment.\n\nWhat you'll do:\n• Develop responsive web applications using modern frameworks\n• Build and maintain APIs and backend services\n• Collaborate with designers and product managers\n• Optimize application performance and user experience\n• Implement database designs and data models\n• Deploy applications to cloud platforms\n\nWe offer a collaborative environment where you can work with cutting-edge technologies!",
+    "requirements": [
+      "3+ years of full stack development experience",
+      "Proficiency in JavaScript, HTML, and CSS",
+      "Experience with React.js or Vue.js",
+      "Knowledge of Node.js and Express.js",
+      "Experience with databases (MongoDB, PostgreSQL)",
+      "Understanding of cloud platforms and deployment",
+      "Bachelor's degree in Computer Science or related field"
+    ],
+    "postedDate": "2023-12-26T12:20:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 22,
+    "title": "HR Generalist",
+    "company": "People First Inc",
+    "location": "Charlotte, NC",
+    "salary": {
+      "min": 60000,
+      "max": 80000
+    },
+    "type": "Full-time",
+    "description": "We are looking for an HR Generalist to support our human resources functions. You will work on recruitment, employee relations, and HR policy implementation.\n\nResponsibilities:\n• Manage full-cycle recruitment process\n• Handle employee relations and conflict resolution\n• Maintain HR policies and procedures\n• Coordinate training and development programs\n• Support performance management processes\n• Ensure compliance with employment laws and regulations\n\nThis role offers the opportunity to work in a supportive environment and make a positive impact on employee experience.",
+    "requirements": [
+      "3+ years of HR experience",
+      "Knowledge of employment laws and regulations",
+      "Experience with HRIS systems",
+      "Strong interpersonal and communication skills",
+      "Ability to handle confidential information",
+      "Problem-solving and conflict resolution abilities",
+      "Bachelor's degree in Human Resources, Business, or related field"
+    ],
+    "postedDate": "2023-12-25T08:00:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 23,
+    "title": "Mobile App Developer",
+    "company": "MobileFirst Tech",
+    "location": "San Antonio, TX",
+    "salary": {
+      "min": 85000,
+      "max": 115000
+    },
+    "type": "Full-time",
+    "description": "Join our mobile development team and create innovative mobile applications for iOS and Android platforms. You will work on cutting-edge mobile technologies and user experiences.\n\nWhat you'll do:\n• Develop native and cross-platform mobile applications\n• Collaborate with designers on UI/UX implementation\n• Integrate mobile apps with backend services and APIs\n• Optimize app performance and user experience\n• Publish apps to App Store and Google Play\n• Stay current with mobile development trends and technologies\n\nWe offer the opportunity to work on exciting mobile projects and reach millions of users!",
+    "requirements": [
+      "3+ years of mobile app development experience",
+      "Experience with iOS (Swift) and/or Android (Kotlin/Java)",
+      "Knowledge of cross-platform frameworks (React Native, Flutter)",
+      "Understanding of mobile app architecture patterns",
+      "Experience with API integration and data management",
+      "Knowledge of mobile app testing and debugging",
+      "Bachelor's degree in Computer Science or related field"
+    ],
+    "postedDate": "2023-12-24T16:30:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 24,
+    "title": "Account Executive",
+    "company": "Sales Solutions Pro",
+    "location": "Orlando, FL",
+    "salary": {
+      "min": 65000,
+      "max": 90000
+    },
+    "type": "Full-time",
+    "description": "We are seeking an Account Executive to manage client relationships and drive revenue growth. You will work with existing clients and develop new business opportunities.\n\nKey responsibilities:\n• Manage and grow existing client accounts\n• Identify new business opportunities and prospects\n• Prepare proposals and presentations for clients\n• Negotiate contracts and close deals\n• Collaborate with internal teams to deliver solutions\n• Maintain accurate records in CRM system\n\nJoin our team and help us build strong client relationships while achieving sales targets!",
+    "requirements": [
+      "3+ years of account management or sales experience",
+      "Strong relationship-building and communication skills",
+      "Experience with B2B sales and client management",
+      "Knowledge of CRM systems and sales processes",
+      "Ability to work independently and meet targets",
+      "Negotiation and presentation skills",
+      "Bachelor's degree in Business, Marketing, or related field"
+    ],
+    "postedDate": "2023-12-23T13:45:00Z",
+    "experienceLevel": "Mid Level"
+  },
+  {
+    "Id": 25,
+    "title": "Systems Administrator",
+    "company": "IT Infrastructure Corp",
+    "location": "Kansas City, MO",
+    "salary": {
+      "min": 75000,
+      "max": 100000
+    },
+    "type": "Full-time",
+    "description": "We are looking for a Systems Administrator to maintain and optimize our IT infrastructure. You will manage servers, networks, and system security.\n\nResponsibilities:\n• Manage and maintain servers and network infrastructure\n• Install and configure software and hardware systems\n• Monitor system performance and troubleshoot issues\n• Implement security policies and backup procedures\n• Provide technical support to end users\n• Document system configurations and procedures\n\nThis role offers the opportunity to work with diverse technologies and maintain critical business systems.",
+    "requirements": [
+      "3+ years of systems administration experience",
+      "Experience with Windows and Linux server environments",
+      "Knowledge of networking protocols and security",
+      "Experience with virtualization technologies",
+      "Strong troubleshooting and problem-solving skills",
+      "Understanding of backup and disaster recovery",
+      "Bachelor's degree in Computer Science or related field"
+    ],
+    "postedDate": "2023-12-22T10:15:00Z",
+    "experienceLevel": "Mid Level"
+  }
+]

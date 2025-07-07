@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.Toastify__toast-container {
+  width: 320px;
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-height: 48px;
+  margin-bottom: 8px;
+}
+
+.Toastify__toast--success {
+  background: #059669;
+  color: white;
+}
+
+.Toastify__toast--error {
+  background: #DC2626;
+  color: white;
+}
+
+.Toastify__toast--info {
+  background: #3B82F6;
+  color: white;
+}
+
+.Toastify__toast--warning {
+  background: #D97706;
+  color: white;
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.Toastify__close-button {
+  color: white;
+  opacity: 0.8;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #2557A7 0%, #164081 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #2557A7 0%, #164081 100%);
+  }
+  
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, #FF6B35 0%, #E55D2B 100%);
+  }
+  
+  .shadow-card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .shadow-card-hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .backdrop-blur-glass {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
