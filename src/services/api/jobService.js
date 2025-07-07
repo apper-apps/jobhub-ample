@@ -169,7 +169,108 @@ export const jobService = {
     if (index === -1) {
       throw new Error('Job not found')
     }
-    jobs.splice(index, 1)
+jobs.splice(index, 1)
     return true
+  },
+
+  async uploadJobs(csvFile, onProgress = () => {}) {
+    await delay(500)
+    
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      
+      reader.onload = async (e) => {
+        try {
+          const csvText = e.target.result
+          const lines = csvText.split('\n').filter(line => line.trim())
+          
+          if (lines.length < 2) {
+            reject(new Error('CSV file must contain header and at least one job'))
+            return
+          }
+
+          const headers = lines[0].split(',').map(h => h.trim().toLowerCase())
+          const requiredHeaders = ['title', 'company', 'location']
+          const missingHeaders = requiredHeaders.filter(h => !headers.includes(h))
+          
+          if (missingHeaders.length > 0) {
+            reject(new Error(`Missing required columns: ${missingHeaders.join(', ')}`))
+            return
+          }
+
+          const jobs = []
+          const totalJobs = lines.length - 1
+
+          for (let i = 1; i < lines.length; i++) {
+            const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''))
+            
+            if (values.length !== headers.length) {
+              console.warn(`Skipping line ${i + 1}: column count mismatch`)
+              continue
+            }
+
+            const jobData = {}
+            headers.forEach((header, index) => {
+              jobData[header] = values[index]
+            })
+
+            // Validate required fields
+            if (!jobData.title || !jobData.company || !jobData.location) {
+              console.warn(`Skipping line ${i + 1}: missing required fields`)
+              continue
+            }
+
+            // Process salary fields
+            const salary = {}
+            if (jobData.salarymin || jobData.salarymax) {
+              salary.min = jobData.salarymin ? parseInt(jobData.salarymin) : null
+              salary.max = jobData.salarymax ? parseInt(jobData.salarymax) : null
+            }
+
+            const processedJob = {
+              title: jobData.title,
+              company: jobData.company,
+              location: jobData.location,
+              type: jobData.type || 'Full-time',
+              experienceLevel: jobData.experiencelevel || 'Mid Level',
+              description: jobData.description || '',
+              requirements: jobData.requirements || '',
+              salary: Object.keys(salary).length > 0 ? salary : null
+            }
+
+            // Generate ID
+            const existingJobs = [...jobsData, ...jobs]
+            const maxId = Math.max(...existingJobs.map(job => job.Id), 0)
+            processedJob.Id = maxId + jobs.length + 1
+            processedJob.postedDate = new Date().toISOString()
+
+            jobs.push(processedJob)
+
+            // Update progress
+            const progress = Math.round((i / totalJobs) * 100)
+            onProgress(progress)
+            
+            // Simulate processing delay
+            await delay(50)
+          }
+
+          if (jobs.length === 0) {
+            reject(new Error('No valid jobs found in CSV file'))
+            return
+          }
+
+          onProgress(100)
+          resolve(jobs)
+        } catch (error) {
+          reject(new Error('Failed to parse CSV file. Please check the format.'))
+        }
+      }
+
+      reader.onerror = () => {
+        reject(new Error('Failed to read file'))
+      }
+
+      reader.readAsText(csvFile)
+    })
   }
 }
