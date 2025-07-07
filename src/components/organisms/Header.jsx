@@ -81,8 +81,7 @@ const Header = () => {
                 <ApperIcon name={isMobileMenuOpen ? "X" : "Menu"} className="h-5 w-5" />
               </Button>
             </div>
-          </div>
-        </div>
+</div>
         </div>
 
         {/* Mobile Navigation */}
